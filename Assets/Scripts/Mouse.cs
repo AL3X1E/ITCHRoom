@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class Mouse : MonoBehaviour
 {
-    public float sX;
-    public float sY;
-    public Transform or;
-    
-    float xR;
-    float yR;
-    // Start is called before the first frame update
+    //Valores de Rotacion permitida y Sensibilidad del Raton.
+    float mouseSens = 200f;
+    float xRotation = 0f;
+    public Transform Jugador;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
-    // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sY;
-        yR += mouseX;
-        xR -= mouseY;
-        xR = Mathf.Clamp(xR, -90f, 90f);
-        transform.rotation = Quaternion.Euler(xR, yR, 0);
-        or.rotation = Quaternion.Euler(0, yR, 0);
+        //Obtener datos del movimiento del raton, en X y Y, despues girar en la rotacion correspondiente.
+        float mouseX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        Jugador.Rotate(Vector3.up * mouseX);
     }
 }
