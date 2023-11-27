@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - InteractT
   - Water
   - UI
-  - 
-  - 
+  - InteractG
+  - InteractA
   - 
   - 
   - 

@@ -10,14 +10,23 @@ public class Interact : MonoBehaviour
     {
         camera = transform.Find("Camara");
     }
-
-    // Update is called once per frame
     void Update()
     {
      Debug.DrawRay(camera.position, camera.forward * rayDistance, Color.red);
      RaycastHit hit;
-     if (Physics.Raycast(camera.position, camera.forward, out hit, rayDistance)) {
-        Debug.Log(hit.transform.name); 
-     }
+     if(Input.GetButtonDown("Fire1")){
+        if (Physics.Raycast(camera.position, camera.forward, out hit, rayDistance, LayerMask.GetMask("InteractT"))) {
+            hit.transform.GetComponent<InteractivoT>().Interact();
+            Debug.Log(hit.transform.name);
+            }
+        }
+        if (Physics.Raycast(camera.position, camera.forward, out hit, rayDistance, LayerMask.GetMask("InteractG"))) {
+            hit.transform.GetComponent<InteractivoG>().Interact();
+            Debug.Log(hit.transform.name);
+        }
+        if (Physics.Raycast(camera.position, camera.forward, out hit, rayDistance, LayerMask.GetMask("InteractA"))) {
+            Debug.Log(hit.transform.name);
+        }
     }
 }
+
