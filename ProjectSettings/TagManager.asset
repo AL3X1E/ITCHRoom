@@ -3,16 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Tubos
+  - Azul
+  - Verde
+  - Rojo
+  - Gato
+  - GReset
+  - Tuberia
+  - Salida
+  - Tuberia2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - InteractT
+  - Interact
   - Water
   - UI
-  - InteractG
-  - InteractA
+  - 
+  - 
   - 
   - 
   - 
